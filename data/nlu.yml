@@ -1,0 +1,198 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+
+- intent: information
+  examples: |
+    - Information
+    - info
+    - Info
+    - I would like information about
+    - Can you provide me information
+    - help
+    - I want to know about 
+    - Give me info
+    - information
+    
+- intent: models
+  examples: |
+    - Models
+    - Tell me about models
+    - What models are there available?
+
+- intent: choose_car
+  examples: |
+    - [a1](model)
+    - [a3] (model)
+    - [a4](model)
+    - [q2](model)
+    - [q3](model)
+    - [q5](model)
+- intent: choose_service_car
+  examples: |
+    - [a1 service](model_service)
+    - [a3 service](model_service)
+    - [a4 service](model_service)
+    - [q2 service](model_service)
+    - [q3 service](model_service)
+    - [q5 service](model_service)
+
+- intent: a3
+  examples: |
+    - A3
+    - a3
+    - tell me about a3
+
+- intent: a1
+  examples: |
+    - A1
+    - a1
+    - tell me about a1
+
+- intent: a4
+  examples: |
+    - A4
+    - a4
+    - tell me about a4
+
+- intent: q2
+  examples: |
+    - Q2
+    - q2
+    - tell me about q2
+
+- intent: test_drive
+  examples: |
+    - Test  drive
+    - test drive
+    - Can I book a test drive?
+    - How can I book a test drive?
+    - I need to book a test drive.
+
+- intent: q3
+  examples: |
+    - Q3
+    - q3
+    - tell me about q3
+
+- intent: q5
+  examples: |
+    - Q5
+    - q5
+    - tell me about q5
+
+- intent: phone
+  examples: |
+    - [6976976976](phone)
+    - [6986986986](phone)
+    - [6936936936](phone)
+
+- intent: choose_date
+  examples: |
+    - I want to test drive on [May 7](date)
+    - Book [May 8](date)
+    - [May 9](date)
+    - [May 8](date)
+    - [May 7](date)
+
+- intent: choose_service_date
+  examples: |
+    - I want to schedule service on [May 7](date_service)
+    - Service booking for [May 8](date_service)
+    - [May 9](date_service) works for service
+    - Can I service my car on [May 8](date_service)?
+    - Let's go with [May 7](date_service) for servicing
+
+
+- intent: choose_time
+  examples: |
+    - 9 AM
+    - 11 AM
+    - 3 PM
+
+- intent: affirm1
+  examples: |
+    - yes
+    - Yes
+
+- intent: affirm
+  examples: |
+    - yes
+    - Yes
+
+- intent: email
+  examples: |
+    - my email is [bills@example.com](email)
+    - [bills@gmail.com](email)
+    - [john.doe@yahoo.com](email)
+    - here is my email: [bob@audi.com](email)
+    - it's [hello123@domain.gr](email)
+
+- intent: service
+  examples: |
+    - service
+    - I want to schedule a service
+    - I want to make a service appointment
+    - Service
+
+- intent: contact_info
+  examples: |
+    - contact information
+    - contact
+    - what is the telephone
+    - phone number?
+    - how do I contact you?
+
+- intent: tell_joke
+  examples: |
+    - tell me a joke
+    - joke
+    - make me laugh

@@ -1,0 +1,290 @@
+version: "3.1"
+actions:
+  - utter_welcome
+  - action_store_user_info
+  - action_tell_joke
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - affirm1
+  - deny
+  - information
+  - models
+  - a3
+  - a1
+  - a4
+  - q2
+  - q3
+  - q5
+  - test_drive
+  - choose_date
+  - email
+  - choose_time
+  - choose_car
+  - service
+  - choose_service_car
+  - phone
+  - choose_service_date
+  - contact_info
+  - tell_joke
+
+
+entities:
+  - date
+  - email
+  - time
+  - model
+  - model_service
+  - date_service  
+  - phone
+
+responses:
+  utter_greet:
+  - text: | 
+      Hello, welcome to Audi Assistant, how may I help you?  
+      *✧ For example you can say 'information' or 'models' or if you want to laugh try 'tell me a joke'.*
+
+  utter_deny:
+  - text: |
+      Okay! Is there anything else I can help you with?
+
+  utter_bye:
+  - text: |
+      Bye! Hope I helped you with what you needed!
+
+  utter_welcome:
+  - text: |
+      Hello, welcome!
+
+  utter_default:
+    - text: "I am sorry, I do not understand what you said. Try 'information' for more!"
+
+  utter_information:
+  - text: |
+      I can help you find information about:
+      Audi's newest models,
+      ✦ Schedule a service,
+      ✦ Schedule a test drive,
+      ✦ Contact information.
+    buttons: 
+    - title: "Models"
+      payload: "/models"
+    - title: "Service"
+      payload: "/service"
+    - title: "Test drive"
+      payload: "/test_drive"
+    - title: "Contact information"
+      payload: "/contact_info"
+    
+
+
+
+
+  utter_goodbye:
+  - text: "Bye"
+
+
+  utter_models:
+  - text: |
+      There are several available models:
+      - A1, A3, A4
+      - Q2, Q3, Q5
+      **Would you like to know something about a specific model?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm1"
+    - title: "No"
+      payload: "/deny"
+    
+  utter_a3:
+  - text: |
+      With the newly-updated 2025 Audi A3, you get the premium features and functionality of a full-size sedan—in a size built for your life. You can find yours in our dealership!
+       **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  
+  utter_a1:
+  - text: |
+      Compact luxury, redefined. Perfect for urban explorers, it blends stylish design with agile performance and smart technology—big sophistication in a small package. 
+
+      **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  
+  utter_a4:
+  - text: |
+      The epitome of sophistication and performance. With its timeless design, cutting-edge technology, and dynamic handling, it delivers an exceptional driving experience tailored for modern elegance.
+       **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  utter_q2:
+  - text: |
+      Bold, compact, and versatile. Designed for urban adventures, it combines striking style with agile handling and smart technology—perfect for conquering city streets and beyond.
+       **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  utter_q3:
+  - text: |
+      Versatile elegance meets robust performance. With its dynamic design, advanced technology, and spacious comfort, it is the compact SUV tailored for any journey—urban or off-road.
+       **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  utter_q5:
+  - text: |
+      Where luxury meets versatility. With its striking design, advanced technology, and dynamic performance, this SUV delivers comfort and confidence for every journey—city streets to open highways.
+       **Do you want to book a test drive?**
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+
+  utter_models_preview:
+  - text: "**Choose a model:**"
+    buttons:
+    - title: "A1"
+      payload: '/a1{"model": "A1"}'
+    - title: "A3"
+      payload: "/a3"
+    - title: "A4"
+      payload: "/a4"
+    - title: "Q2"
+      payload: "/q2"
+    - title: "Q3"
+      payload: "/q3"
+    - title: "Q5"
+      payload: "/q5"
+
+  utter_phone:
+  - text: "Please enter your mobile phone:"
+
+  utter_test_drive_date:
+    - text: "Please choose a date:"
+      buttons:
+      - title: "May 7"
+        payload: '/choose_date{"date": "May 7"}'
+      - title: "May 8"
+        payload: '/choose_date{"date": "May 8"}'
+      - title: "May 9"
+        payload: '/choose_date{"date": "May 9"}'
+
+  utter_test_drive_time:
+    - text: "Please choose a time slot:"
+      buttons:
+        - title: "9 AM"
+          payload: '/choose_time{"time": "9 AM"}'
+        - title: "11 AM"
+          payload: '/choose_time{"time": "11 AM"}'
+        - title: "3 PM"
+          payload: '/choose_time{"time": "3 PM"}'
+
+  utter_email:
+    - text: "Please enter your email: "
+    
+  utter_test_drive_confirmed:
+    - text: |
+        ✅ Your test drive has been scheduled for {date} at {time}, you will receive a confirmation email at {email}.
+        **Please bring your license and ID with you!**
+        *If you want more information you can call at our call center: +30 210 2102 210 or email audiaudi@gmai.com*
+
+  utter_service:
+    - text: |
+        🧰 What car do you want to service?
+      buttons:
+        - title: "A1"
+          payload: '/choose_service_car{"service_car":"A1"}'
+        - title: "A3"
+          payload: '/choose_service_car{"service_car":"A3"}'
+        - title: "A4"
+          payload: '/choose_service_car{"service_car":"A4"}'
+        - title: "Q2"
+          payload: '/choose_service_car{"service_car":"Q2"}'
+        - title: "Q3"
+          payload: '/choose_service_car{"service_car":"Q3"}'
+        - title: "Q5"
+          payload: '/choose_service_car{"service_car":"Q5"}'
+ 
+  utter_contact_info:
+    - text: |
+        You can contact us via phone at 📞 210 2102 102 or by sending an email at 📧 Audi_athens@audimail.com.
+  
+  utter_service_date:
+    - text: |
+        📅 .Please select a date:
+      buttons:
+        - title: "May 7"
+          payload: '/choose_service_date{"date_service": "May 7"}'
+        - title: "May 8"
+          payload: '/choose_service_date{"date_service": "May 8"}'
+        - title: "May 9"
+          payload: '/choose_service_date{"date_service": "May 9"}'
+  utter_service_time:
+    - text: "What time would you like to schedule your service?"
+  utter_service_confirmed:
+    - text: |
+        ✅ You have sheduled your service at {date_service}, a text message will be sent at {phone}. For more information Please contact us! 
+        *Thanks for choosing Audi*
+
+slots:
+  date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: date
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: email
+  time:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: time
+  model:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: model
+  service_car:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: service_car
+  phone:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: phone
+  date_service:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: date_service
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

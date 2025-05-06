@@ -1,0 +1,194 @@
+version: "3.1"
+
+stories:
+
+- story: welcome information
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: information
+  - action: utter_information
+
+- story: models
+  steps:
+  - intent: models
+  - action: utter_models
+  - intent: affirm1
+  - action: utter_models_preview
+
+# - story: choose_car
+#   steps:
+#   - intent: choose_car
+#   - slot_was_set:
+#     - model
+#   - action: utter_test_drive_date
+#   - slot_was_set:
+#       - date
+#   - intent: choose_date
+#   - action: utter_test_drive_time
+#   - intent: choose_time
+#   - slot_was_set:
+#       - time
+#   - action: utter_email
+#   - intent: email
+#   - slot_was_set:
+#       - email
+#   - action: utter_test_drive_confirmed
+  
+
+- story: a3
+  steps:
+  - intent: a3
+  - action: utter_a3
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+
+- story: a1
+  steps:
+  - intent: a1
+  - action: utter_a1
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+  
+- story: a4
+  steps:
+  - intent: a4
+  - action: utter_a4
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+
+- story: q2
+  steps:
+  - intent: q2
+  - action: utter_q2
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+
+
+- story: q3
+  steps:
+  - intent: q3
+  - action: utter_q3
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+
+- story: q5
+  steps:
+  - intent: q5
+  - action: utter_q5
+  - intent: affirm
+  - action: utter_test_drive_date
+  - intent: choose_date
+  - slot_was_set:
+      - date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time 
+  - action: utter_email
+  - intent: email    
+  - action: utter_test_drive_confirmed
+  
+- story: test_drive
+  steps:
+  - intent: test_drive
+  - action: utter_test_drive_date
+  - slot_was_set:
+      - date
+  - intent: choose_date
+  - action: utter_test_drive_time
+  - intent: choose_time
+  - slot_was_set:
+      - time
+  - action: utter_email
+  - intent: email
+  - slot_was_set:
+      - email
+  - action: utter_test_drive_confirmed
+
+- story: contact_information
+  steps:
+  - intent: contact_info
+  - action: utter_contact_info
+
+- story: service
+  steps:
+  - intent: service
+  - action: utter_service
+  - slot_was_set:
+    - service_car
+  - intent: choose_service_car
+  - action: utter_service_date
+  - slot_was_set:
+    - date_service
+  - intent: choose_service_date
+  - action: utter_phone
+  - intent: phone
+  - slot_was_set:
+    - phone
+  - action: utter_service_confirmed
+
+- story: deny
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- story: bye
+  steps:
+  - intent: goodbye
+  - action: utter_bye
+
+- story : joke
+  steps:
+  - intent: tell_joke
+  - action: action_tell_joke

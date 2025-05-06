@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audi Luxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --accent: #D50000;
+            --text: #E0E0E0;
+            --light-text: #A0A0A0;
+            --bg: #0A0A0A;
+            --light-bg: #121212;
+            --dark-accent: #1A1A1A;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header.scrolled {
+            padding: 0.8rem 8%;
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 28px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            left: 0;
+            bottom: -4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.6)), 
+                       url('/api/placeholder/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -5%;
+            width: 40%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(213, 0, 0, 0.15), transparent 70%);
+            filter: blur(60px);
+            z-index: 1;
+            animation: glow 8s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 8%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            line-height: 1.1;
+            position: relative;
+        }
+        
+        .hero-content h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background-color: var(--accent);
+            margin-top: 25px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.95rem 2.7rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(0, 0, 0, 0.2);
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(213, 0, 0, 0.2);
+        }
+
+        .btn:hover::after {
+            height: 100%;
+        }
+
+        .btn.btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-left: 1.2rem;
+        }
+
+        .btn.btn-outline:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 8%;
+            background: var(--bg);
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-header span {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 450px;
+            background: url('/api/placeholder/800/600') center/cover;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* This is where you can change the image */
+        /* Replace the url('/api/placeholder/800/600') with your actual image path */
+        /* For example: url('images/audi-r8.jpg') */
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            border: 1px solid var(--accent);
+            z-index: -1;
+        }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 70%;
+            height: 70%;
+            background: linear-gradient(135deg, rgba(213, 0, 0, 0.1), rgba(213, 0, 0, 0.05));
+            z-index: -2;
+            filter: blur(10px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 8%;
+            background: var(--dark-accent);
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .contact-info p {
+            font-size: 1.05rem;
+            color: var(--light-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-item svg {
+            margin-right: 1rem;
+            margin-top: 5px;
+            color: var(--accent);
+        }
+
+        .contact-info-item div {
+            flex: 1;
+        }
+
+        .contact-info-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .contact-info-item p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(213, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group textarea {
+            height: 140px;
+            resize: none;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 8%;
+            background: #000000;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(213, 0, 0, 0.3), transparent);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            font-weight: 300;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .about-image {
+                width: 100%;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.8rem;
+            }
+
+            .about, .contact {
+                padding: 5rem 8%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 1rem 5%;
+            }
+
+            header.scrolled {
+                padding: 0.8rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about, .contact {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="28" height="28" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M256 40C136.7 40 40 136.7 40 256C40 375.3 136.7 472 256 472C375.3 472 472 375.3 472 256C472 136.7 375.3 40 256 40ZM256 448C150 448 64 362 64 256C64 150 150 64 256 64C362 64 448 150 448 256C448 362 362 448 256 448Z" fill="white"/>
+                <path d="M256 96C167.6 96 96 167.6 96 256C96 344.4 167.6 416 256 416C344.4 416 416 344.4 416 256C416 167.6 344.4 96 256 96ZM256 392C181 392 120 331 120 256C120 181 181 120 256 120C331 120 392 181 392 256C392 331 331 392 256 392Z" fill="white"/>
+                <path d="M256 160C256 160 208 184 208 256C208 328 256 352 256 352C256 352 304 328 304 256C304 184 256 160 256 160Z" fill="#D50000"/>
+            </svg>
+            <span class="logo-text">AUDI LUXE</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>THE ART OF<br>PERFORMANCE</h1>
+            <p>Discover the perfect balance of luxury, engineering excellence, and cutting-edge innovation at Audi Luxe.</p>
+            <a href="#contact" class="btn">Schedule Test Drive</a>
+            <a href="#about" class="btn btn-outline">Explore Models</a>
+        </div>
+    </section>
+
+    <section class="about fade-in" id="about">
+        <div class="section-header">
+            <span>About Us</span>
+            <h2>Luxury Redefined</h2>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>At Audi Luxe, we are committed to delivering an exceptional automotive experience that exceeds expectations. With our heritage of precision engineering and sophisticated design, our dealership offers you the finest selection of Audi vehicles paired with unparalleled service.</p>
+                <p>Our team of dedicated professionals is passionate about the Audi brand and committed to ensuring your complete satisfaction. Whether you're seeking the perfect new vehicle, require expert maintenance, or need personalized financing solutions, we are here to assist you every step of the way.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            <div class="about-image">
+                <img src="audi.jpg" alt="Audi Luxury Vehicle"> 
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="contact fade-in" id="contact">
+        <div class="section-header">
+            <span>Contact</span>
+            <h2>Get In Touch</h2>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>We're Here For You</h3>
+                <p>Have questions about our vehicles or services? Reach out to us and our team will be happy to assist you.</p>
+                
+                <div class="contact-info-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#D50000"/>
+                    </svg>
+                    <div>
+                        <h4>Visit Us</h4>
+                        <p>123 Luxury Drive<br>Beverly Hills, CA 90210</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="#D50000"/>
+                    </svg>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+1 (800) AUDI-LUX<br>+1 (310) 555-0123</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#D50000"/>
+                    </svg>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>info@audiluxe.com<br>sales@audiluxe.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Audi Luxe ITC 3161. All Rights Reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.min.js"></script>
+    <script>
+        window.onload = () => {
+        WebChat.default({
+            initPayload: "/greet",
+            customData: { language: "en" },
+            socketUrl: "http://localhost:5005/",
+            title: "Audi Assistant",
+            subtitle: "Ask me about A1, test drives, and more!",
+            inputTextFieldHint: "Type your message...",
+            profileAvatar: "https://cdn-icons-png.flaticon.com/512/188/188995.png",
+            showFullScreenButton: true
+
+        });
+        };
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+          window.WebChat.default({
+            socketUrl: "http://localhost:5005",  // Your Rasa server URL
+            socketPath: "/socket.io/",
+            title: "Chat with us!", 
+            subtitle: "How can we help you?", 
+            initPayload: '/greet',  // You can trigger the 'greet' intent here
+          });
+        };
+      </script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
+        
+        const fadeObserver = new IntersectionObserver(fadeCallback, {
+            threshold: 0.15
+        });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

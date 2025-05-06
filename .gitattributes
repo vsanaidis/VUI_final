@@ -1,0 +1,5 @@
+path/to/large/file filter=lfs diff=lfs merge=lfs -text
+C:/Users/BillS/Desktop/VUI_final filter=lfs diff=lfs merge=lfs -text
+venv/Lib/site-packages/clang/native/libclang.dll filter=lfs diff=lfs merge=lfs -text
+venv/Lib/site-packages/tensorflow/python/_pywrap_tensorflow_internal.pyd filter=lfs diff=lfs merge=lfs -text
+venv/Lib/site-packages/jaxlib/xla_extension.pyd filter=lfs diff=lfs merge=lfs -text
